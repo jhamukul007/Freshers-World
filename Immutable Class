@@ -1,0 +1,55 @@
+package com.basic.Demo;
+
+public final class Immutable implements Cloneable{
+
+	private int id;
+	private String name;
+	public Immutable(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public int getId() {
+		return this.id;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Immutable other = (Immutable) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Immutable [id=" + id + ", name=" + name + "]";
+	}
+	
+	@Override
+	public Immutable clone() {
+		Immutable obj=null;
+		try {
+			obj=(Immutable)super.clone();
+		}
+		catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	
+}
